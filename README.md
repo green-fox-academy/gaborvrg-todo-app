@@ -1,2 +1,2 @@
 # gaborvrg-todo-app
-Gabor Varga To-do App
+Gabor Varga To-do App in Python 3
