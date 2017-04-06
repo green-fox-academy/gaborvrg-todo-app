@@ -1,4 +1,4 @@
-1;Walk the dog
-2;Buy milk
-3;Do homework
-4;Go to doctor
+0;Walk the dog
+1;Buy milk
+0;Do homework
+0;Go to doctor
