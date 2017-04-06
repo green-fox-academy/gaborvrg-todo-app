@@ -18,10 +18,12 @@ def arg_reader():
             todo_list()
         elif ( sys.argv[1] == '-a' ):
             add_line()
+        elif ( sys.argv[1] == '-a' ):
+            add_line()
 
 
 def todo_list():
-    
+
     file = open('todo-db.txt','r')
     todo_db = file.read()
     print(todo_db)
@@ -40,12 +42,14 @@ def add_line():
 def view():
 
     file = open('todo-db.txt','r')
+    number = 1
     for line in file:
         line_list = line.rstrip().split(";")
         if line_list[0] == '1':
-            print('[X] ',line_list[1])
+            print(number,'[X] ',line_list[1])
         else:
-            print('[ ] ',line_list[1])
+            print(number,'[ ] ',line_list[1])
+        number += 1
     file.close()
 
 
