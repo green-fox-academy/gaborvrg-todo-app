@@ -15,19 +15,15 @@ def arg_reader():
     else:
         # return sys.argv[1:]
         if ( sys.argv[1] == '-l' ):
-            todo_list()
+            view()
+            # todo_list()
         elif ( sys.argv[1] == '-a' ):
             add_line()
-        elif ( sys.argv[1] == '-a' ):
-            add_line()
+        elif ( sys.argv[1] == '-c' ):
+            complete()
+        # elif ( sys.argv[1] == '-c' ):
+        #     pass
 
-
-def todo_list():
-
-    file = open('todo-db.txt','r')
-    todo_db = file.read()
-    print(todo_db)
-    file.close()
 
 
 def add_line():
@@ -52,6 +48,19 @@ def view():
         number += 1
     file.close()
 
+def complete():
+    file = open('todo-db.txt','r')
+    line_num = 1
+
+    for lines in file:
+        if num == sys.argv[2]:
+
+
+
+        # print(line_num, lines.rstrip())
+        line_num += 1
+    
+
 
 
 arg_reader()
@@ -59,3 +68,17 @@ arg_reader()
 
 
 
+
+
+
+
+
+
+
+
+# def todo_list():
+
+#     file = open('todo-db.txt','r')
+#     todo_db = file.read()
+#     print(todo_db)
+#     file.close()
