@@ -69,7 +69,6 @@ class Database():
             number += 1
 
         file.close()
-        print(self.line_list)
 
         return self.line_list
 
@@ -78,15 +77,11 @@ class Database():
             # print(self.line_list)
             for line in self.line_list:
                 if line[1] == '0':
-                    # print('\n',line[0], '[ ]' , line[2:], '\n')
-                    print(line)
-                    # print(','.join(line))
-
+                    print('\n',line[0], '[ ]' , ','.join(line[2:]))
+                
                 else:
-                    # print('\n',line[0], '[X]' , line[2:], '\n')
-                    print(line)
-
-                    # print ', '.join(mylist)
+                    print('\n',line[0], '[X]' , ','.join(line[2:]))
+                  
 
 
 

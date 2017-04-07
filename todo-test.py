@@ -8,10 +8,10 @@ class Testtodo(unittest.TestCase):
         # db.open_db()
         self.assertEqual(db.open_db(
             'todo-db.txt', 'r'), 
-        
-            [[1, '0', 'Walk the dog'],
-             [2, '1', 'Buy milk'], 
-             [3, '1', 'Do homework']])
+
+            [['1', '0', 'Walk the dog'],
+             ['2', '1', 'Buy milk'], 
+             ['3', '1', 'Do homework']])
 
 if __name__ == '__main__':
     unittest.main()
