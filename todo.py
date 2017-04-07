@@ -31,8 +31,8 @@ class Controller():
         db = Database()
 
         if len(sys.argv) == 1:
-            # self.help_txt()
-            pass
+            self.help_txt()
+            # pass
         else:
             # return sys.argv[1:]
             if ( sys.argv[1] == '-l' ):
@@ -57,17 +57,19 @@ class Database():
     def open_db(self, openfile = '', open_arg = ''):
         self.openfile = openfile
         self.open_arg = open_arg
+
         number = 1
 
         file = open(self.openfile, self.open_arg)
 
         for line in file:
             x = line.rstrip().split(";")
-            x.insert(0, number)
+            x.insert(0, str(number))
             line_list = self.line_list.append(x)
             number += 1
 
         file.close()
+        print(self.line_list)
 
         return self.line_list
 
@@ -76,9 +78,15 @@ class Database():
             # print(self.line_list)
             for line in self.line_list:
                 if line[1] == '0':
-                    print('\n',line[0], '[ ]' , line[2:], '\n')
+                    # print('\n',line[0], '[ ]' , line[2:], '\n')
+                    print(line)
+                    # print(','.join(line))
+
                 else:
-                    print('\n',line[0], '[X]' , line[2:], '\n')
+                    # print('\n',line[0], '[X]' , line[2:], '\n')
+                    print(line)
+
+                    # print ', '.join(mylist)
 
 
 
