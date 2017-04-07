@@ -3,8 +3,3 @@
 0;Do homework
 1;Go to doctor
 0;bejegyzes
-0;ujabb
-0;ujabb
-0;bejegyzes
-0;ujabb bejegyzes
-0;ujabb bejegyzes2

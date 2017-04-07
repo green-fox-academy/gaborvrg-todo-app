@@ -1,0 +1,131 @@
+To-do 
+
+
+    - lista manipulalas (data structures,dicts)
+        file beolvasas (text) -> listaba
+
+    - file management (I/O handling)
+
+    - command line (argumentum parsing)
+        print. -> print help 
+        list   -> nem kell arg
+        add    -> "get milk" kell arg
+        remove -> id-t kell beadni (int) sorszama tasknak
+        completes -> id-t kell beadni (int)
+
+    - exception handling
+
+    - database -> text file (mit es hogyan tarolni benne) ket dolog: checked, name
+
+    - data structures -> 2 lehetoseg: lista listaban, dictionary listaban
+
+
+    Vegrehajtas
+
+    - parse arg
+
+
+
+TODO classositasa -- > egy tesz megirasa egy methodusara
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+python todo app
+
+- list manipulation
+    - data structures
+- file manipulation / IO handling
+    - file iras, olvasas
+    - file sorait listava alakitani
+- command line arguments parsing
+    - python_do.py -l - valtozo
+    - if command line argument == -l: list the todos
+    - opcionalis (messgae pl: -l "message")
+- exception handling
+
+ARGUMENTS - MASODIK ARGUMENTUM
+    -              -
+    -l             -
+    -a          "add milk"
+    -r          INT (task sorszama)
+    -c          INT
+
+    def argument_reader()
+        if no args return []
+        if -l return ["l"]
+        if -l, get milk return ["a", "get milk"]
+
+DATABASE - .csv file
+checked, name
+0|walk the dog
+1|buy milk
+
+DATE STRUCTURE
+pl: [[0, walk the dog], [1, buy milk]]
+pl: [{"ready": 0, "text": walk the dog}
+    {"ready": 1, "text": buy milk}]
+________
+OVERVIEW
+_____________________________
+-if no arg --> print
+
+    -def argument_reader() --> -l
+        --> open file
+        --> parse database (DB)
+        --> print
+
+    -def argument_reader() --> -a
+        --> open file
+        --> append line
+        --> print
+
+    -def argument_reader() --> -r
+        --> open file
+        --> remove line
+        --> print
+
+    -def argument_reader() --> -c
+        --> open file
+        --> parse database (DB)
+        --> flip checked
+        --> write database (DB)
+        --> print
+
+vezerles mindig van (-l, -c...,) - CONTROLLER
+open DB mindig van - MODELL - megnyit es listava alakit
+print mindig van - VIEW
+ketszer van parse DB
+--> fuggvenyek lesznek
+
+CONTROLLER  |-> conctructor, args parse, elinditja a feladatokat (MODELL es VIEW)
+MODELL      |-> open, append line, remove line, write file, (update line), (Parse DB) - ezeket meg kell csinalni (utolso ketto opcionalis)
+VIEW        |-> print todo list, print help, print message
+
+
+
+
+In my opinion the 4th week was very most intensive. 
+
+Sometimes if I don't understand something, it is good to take a break.
+
+I realized, many times after a break, suddenly I understand the logic, the missing step.
+
+The Pomodoro technique seems good to help in these situations, to take some breaks during the day. I will try to use it more often. 
