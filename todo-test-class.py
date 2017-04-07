@@ -1,6 +1,45 @@
 import sys
 
 
+class Controller():
+    """Python Todo application
+            =======================
+
+            Command line arguments:
+             -l   Lists all the tasks
+             -a   Adds a new task
+             -r   Removes an task
+             -c   Completes an task"""
+
+    # def __init__(self):
+        # super(Controller, self).__init__()
+        # self.arg = arg
+
+    def help_txt(self):
+       
+        print(self.__doc__)
+        # pass
+
+        # file = open('help.txt','r')
+        # helptxt = file.read()
+        # print(helptxt)
+        
+
+
+    def arg_reader(self):
+
+        if len(sys.argv) == 1:
+            self.help_txt()
+        else:
+            # # return sys.argv[1:]
+            # if ( sys.argv[1] == '-l' ):
+            #     self.view()
+            #     # todo_list()
+            # elif ( sys.argv[1] == '-a' ):
+            #     self.add_line()
+            pass
+
+
 class Database():
     """Open database for further working process"""
     def __init__(self, line_list = []):
@@ -23,49 +62,35 @@ class Database():
 
         return self.line_list
 
-    
-
-opendb_var = Database()
-print(opendb_var.open_db('todo-db.txt','r'))
 
 
-
-
-
-
-
-
-
-
-
-
-
-class Controller():
-    """Controller for listening command line arguments and sending parameters for Opendb class"""
+class Parser(object):
+    """docstring for Parser"""
     def __init__(self, arg):
-        # super(Controller, self).__init__()
+        super(Parser, self).__init__()
         self.arg = arg
-
-    def help_txt(self):
-
-        file = open('help.txt','r')
-        helptxt = file.read()
-        print(helptxt)
         
 
 
-    def arg_reader(self):
+control = Controller()
+control.help_txt()
+    
 
-        if len(sys.argv) == 1:
-            self.help_txt()
-        else:
-            # # return sys.argv[1:]
-            # if ( sys.argv[1] == '-l' ):
-            #     self.view()
-            #     # todo_list()
-            # elif ( sys.argv[1] == '-a' ):
-            #     self.add_line()
-            pass
+# opendb_var = Database()
+# print(opendb_var.open_db('todo-db.txt','r'))
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
