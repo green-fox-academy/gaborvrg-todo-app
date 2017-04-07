@@ -2,8 +2,7 @@ import sys
 
 
 class Controller():
-    """Controller for listening command line 
-    arguments and sending parameters for Opendb class"""
+    """Controller for listening command line arguments and sending parameters for Opendb class"""
     def __init__(self, file = 'todo-db.txt', arg = 'r'):
         # super(Controller, self).__init__()
         self.file = file
@@ -81,9 +80,20 @@ class Database():
                 
                 else:
                     print('\n',line[0], '[X]' , ','.join(line[2:]))
+
+
+
+class Parser(Database):
+    """docstring for Parser"""
+    def __init__(self):
+        # super(Parser, self).__init__()
+        # self.arg = arg
+        
                   
 
-
+    def add_line(self):
+        self.line_list.append(sys.argv[2])
+        print(self.line_list)
 
 
 
@@ -99,13 +109,6 @@ control.arg_reader()
 
 
 
-
-    # def add_line(self):
-    #     print(self.line_list)
-    #     # file.write("\n0;" + sys.argv[2].rstrip())
-
-    #     self.line_list.append(sys.argv[2])
-    #     print(self.line_list)
 
 # class Parser(object):
 #     """docstring for Parser"""
