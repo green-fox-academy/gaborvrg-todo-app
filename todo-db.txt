@@ -1,5 +1,3 @@
 0;Walk the dog
 1;Buy milk
-0;Do homework
-1;Go to doctor
-0;bejegyzes
+1;Do homework

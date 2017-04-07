@@ -1,92 +1,119 @@
 import sys
 
 
-def help_txt():
-
-    file = open('help.txt','r')
-    helptxt = file.read()
-    print(helptxt)
-
-
-def arg_reader():
-
-    if len(sys.argv) == 1:
-        help_txt()
-    else:
-        # return sys.argv[1:]
-        if ( sys.argv[1] == '-l' ):
-            view()
-            # todo_list()
-        elif ( sys.argv[1] == '-a' ):
-            add_line()
-        # elif ( sys.argv[1] == '-c' ):
-        #     complete()
-        # elif ( sys.argv[1] == '-c' ):
-        #     pass
+class Controller():
+    """Controller for listening command line 
+    arguments and sending parameters for Opendb class"""
+    def __init__(self, file = 'todo-db.txt', arg = 'r'):
+        # super(Controller, self).__init__()
+        self.file = file
+        self.arg = arg
 
 
+    def help_txt(self):
+        """
 
-def add_line():
-    # print(sys.argv[2])
+            Python Todo application
+            =======================
 
-    file = open('todo-db.txt','a') 
-    file.write("\n0;" + sys.argv[2].rstrip())
-    file.close()
-    view()
+            Command line arguments:
+             -l   Lists all the tasks
+             -a   Adds a new task
+             -r   Removes an task
+             -c   Completes an task
+
+             """
+        print(self.help_txt.__doc__)
 
 
-def view():
+    def arg_reader(self):
 
-    file = open('todo-db.txt','r')
-    number = 1
-    for line in file:
-        line_list = line.rstrip().split(";")
-        if line_list[0] == '1':
-            print(number,'[X] ',line_list[1])
+        db = Database()
+
+        if len(sys.argv) == 1:
+            # self.help_txt()
+            pass
         else:
-            print(number,'[ ] ',line_list[1])
-        number += 1
-    file.close()
+            # return sys.argv[1:]
+            if ( sys.argv[1] == '-l' ):
+                
+                db.open_db(self.file, self.arg)
+                db.view()
 
-
-# def complete():
-
-#     file = open('todo-db.txt','r')
-#     line_num = 1
-
-#     for lines in file:
-#         # line_list = lines.rstrip().split(";")
-#         if line_num == sys.argv[2]:
-#             print >>file, lines + lines
+            elif ( sys.argv[1] == '-a' ):
+                # db = Database()
+                db.open_db(self.file, self.arg)
+                db.add_line()
 
 
 
-#         # print(line_list)
-#         # print(line_num, lines.rstrip())
-#         line_num += 1
+class Database():
+    """Open database for further working process"""
+    def __init__(self, line_list = []):
+        # super(Database, self).__init__()
+        self.line_list = line_list
 
+
+    def open_db(self, openfile = '', open_arg = ''):
+        self.openfile = openfile
+        self.open_arg = open_arg
+        number = 1
+
+        file = open(self.openfile, self.open_arg)
+
+        for line in file:
+            x = line.rstrip().split(";")
+            x.insert(0, number)
+            line_list = self.line_list.append(x)
+            number += 1
+
+        file.close()
+
+        return self.line_list
+
+
+    def view(self):
+            # print(self.line_list)
+            for line in self.line_list:
+                if line[1] == '0':
+                    print('\n',line[0], '[ ]' , line[2:], '\n')
+                else:
+                    print('\n',line[0], '[X]' , line[2:], '\n')
+
+
+
+
+
+control = Controller()
+control.arg_reader()
+
+
+
+
+
+
+
+
+
+
+
+    # def add_line(self):
+    #     print(self.line_list)
+    #     # file.write("\n0;" + sys.argv[2].rstrip())
+
+    #     self.line_list.append(sys.argv[2])
+    #     print(self.line_list)
+
+# class Parser(object):
+#     """docstring for Parser"""
+#     def __init__(self, arg):
+#         super(Parser, self).__init__()
+#         self.arg = arg
+        
+
+
+# control.help_txt()
     
 
-arg_reader()
-
-
-
-
-
-
-
-
-
-
-
-# # outF = open("myOutFile.txt", "w")
-# # >>>for line in textList:
-# # ...  print >>outF, line
-# # >>>outF.close()
-
-# def todo_list():
-
-#     file = open('todo-db.txt','r')
-#     todo_db = file.read()
-#     print(todo_db)
-#     file.close()
+# opendb_var = Database()
+# print(opendb_var.open_db('todo-db.txt','r'))
