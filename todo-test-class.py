@@ -2,28 +2,27 @@ import sys
 
 
 class Controller():
-    """Python Todo application
+    """Controller for listening command line 
+    arguments and sending parameters for Opendb class"""
+    def __init__(self):
+        # super(Controller, self).__init__()
+        # self.arg = arg
+        pass
+
+    def help_txt(self):
+        """
+
+        Python Todo application
             =======================
 
             Command line arguments:
              -l   Lists all the tasks
              -a   Adds a new task
              -r   Removes an task
-             -c   Completes an task"""
+             -c   Completes an task
 
-    # def __init__(self):
-        # super(Controller, self).__init__()
-        # self.arg = arg
-
-    def help_txt(self):
-       
-        print(self.__doc__)
-        # pass
-
-        # file = open('help.txt','r')
-        # helptxt = file.read()
-        # print(helptxt)
-        
+             """
+        print(self.help_txt.__doc__)
 
 
     def arg_reader(self):
@@ -31,13 +30,16 @@ class Controller():
         if len(sys.argv) == 1:
             self.help_txt()
         else:
-            # # return sys.argv[1:]
-            # if ( sys.argv[1] == '-l' ):
-            #     self.view()
-            #     # todo_list()
-            # elif ( sys.argv[1] == '-a' ):
-            #     self.add_line()
-            pass
+            # return sys.argv[1:]
+            if ( sys.argv[1] == '-l' ):
+                db = Database()
+                db.open_db('todo-db.txt','r')
+                view = Database()
+                view.view()
+
+            elif ( sys.argv[1] == '-a' ):
+                self.add_line()
+            # pass
 
 
 class Database():
@@ -62,18 +64,42 @@ class Database():
 
         return self.line_list
 
+    def view(self):
+            # print(self.line_list)
+            for line in self.line_list:
+                if line[1] == '0':
+                    print('\n',line[0], '[ ]' , line[2:], '\n')
+                else:
+                    print('\n',line[0], '[X]' , line[2:], '\n')
+        
+
+    
+        # for line in self.line_list:
+        #     print(line)
+        # line_list = line.rstrip().split(";")
+        # if line_list[0] == '1':
+        #     print(number,'[X] ',line_list[1])
+        # else:
+        #     print(number,'[ ] ',line_list[1])
+        # number += 1
 
 
-class Parser(object):
-    """docstring for Parser"""
-    def __init__(self, arg):
-        super(Parser, self).__init__()
-        self.arg = arg
+
+
+
+
+
+# class Parser(object):
+#     """docstring for Parser"""
+#     def __init__(self, arg):
+#         super(Parser, self).__init__()
+#         self.arg = arg
         
 
 
 control = Controller()
-control.help_txt()
+control.arg_reader()
+# control.help_txt()
     
 
 # opendb_var = Database()

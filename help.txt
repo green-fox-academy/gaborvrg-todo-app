@@ -6,3 +6,28 @@ Command line arguments:
  -a   Adds a new task
  -r   Removes an task
  -c   Completes an task
+
+
+
+ class Controller():
+    """Python Todo application
+            =======================
+
+            Command line arguments:
+             -l   Lists all the tasks
+             -a   Adds a new task
+             -r   Removes an task
+             -c   Completes an task"""
+
+    # def __init__(self):
+        # super(Controller, self).__init__()
+        # self.arg = arg
+
+    def help_txt(self):
+        """akarmi"""
+        print(self.help_txt.__doc__)
+        # pass
+
+        # file = open('help.txt','r')
+        # helptxt = file.read()
+        # print(helptxt)
