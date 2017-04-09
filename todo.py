@@ -28,6 +28,7 @@ class Controller():
     def arg_reader(self):
 
         db = Database()
+        pars = Parser()
 
         if len(sys.argv) == 1:
             self.help_txt()
@@ -42,7 +43,21 @@ class Controller():
             elif ( sys.argv[1] == '-a' ):
                 # db = Database()
                 db.open_db(self.file, self.arg)
-                db.add_line()
+                pars.add_line(self.file)
+                db.view()
+
+            elif ( sys.argv[1] == '-c' ):
+                # db = Database()
+                db.open_db(self.file, self.arg)
+                pars.complete(self.file)
+                db.view()
+
+            elif ( sys.argv[1] == '-r' ):
+                # db = Database()
+                db.open_db(self.file, self.arg)
+                pars.remove(self.file)
+                db.view()
+
 
 
 
@@ -51,7 +66,7 @@ class Database():
     def __init__(self, line_list = []):
         # super(Database, self).__init__()
         self.line_list = line_list
-
+     
 
     def open_db(self, openfile = '', open_arg = ''):
         self.openfile = openfile
@@ -60,6 +75,7 @@ class Database():
         number = 1
 
         file = open(self.openfile, self.open_arg)
+
 
         for line in file:
             x = line.rstrip().split(";")
@@ -85,27 +101,57 @@ class Database():
 
 class Parser(Database):
     """docstring for Parser"""
-    def __init__(self):
-        # super(Parser, self).__init__()
-        # self.arg = arg
-        
-                  
 
-    def add_line(self):
-        self.line_list.append(sys.argv[2])
-        print(self.line_list)
+    def add_line(self, file):
+
+        len_list = len(self.line_list) + 1
+        extend_list = [str(len_list),'0',sys.argv[2]]
+        self.line_list.append(extend_list)
+
+        file = open(file, 'w')
+
+        for item in self.line_list:
+            join_item = ';'.join(item[1:])
+            file.write(join_item + '\n')
+            
+        file.close()
+
+
+    def remove(self,file):
+
+        for item in self.line_list:
+            if item[0] == sys.argv[2]:
+                self.line_list.remove(item)
+
+        file = open(file, 'w')
+
+        for item in self.line_list:
+            join_item = ';'.join(item[1:])
+            file.write(join_item + '\n')
+            
+        file.close()
+
+
+    def complete(self,file):
+
+        for line in self.line_list:
+            if sys.argv[2] == line[0] and line[1] != '1':
+                line[1] = '1'
+            else:
+                pass
+
+        file = open(file, 'w')
+
+        for item in self.line_list:
+            join_item = ';'.join(item[1:])
+            file.write(join_item + '\n')
+        file.close()
+
 
 
 
 control = Controller()
 control.arg_reader()
-
-
-
-
-
-
-
 
 
 

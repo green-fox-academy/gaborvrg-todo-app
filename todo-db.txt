@@ -1,3 +1,4 @@
-0;Walk the dog
 1;Buy milk
-1;Do homework
+0;Do homework
+1;Valami
+0;Walk the dog
