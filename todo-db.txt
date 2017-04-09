@@ -1,4 +1,8 @@
 1;Buy milk
-0;Do homework
+1;Do homework
 1;Valami
 0;Walk the dog
+1;Tennivalo
+0;Masik tennivalo
+0;Proba
+0;Proba2

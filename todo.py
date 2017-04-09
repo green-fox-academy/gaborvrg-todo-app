@@ -31,6 +31,7 @@ class Controller():
         pars = Parser()
 
         if len(sys.argv) == 1:
+            print(sys.argv)
             self.help_txt()
             # pass
         else:
@@ -41,24 +42,32 @@ class Controller():
                 db.view()
 
             elif ( sys.argv[1] == '-a' ):
-                # db = Database()
-                db.open_db(self.file, self.arg)
-                pars.add_line(self.file)
-                db.view()
+                if len(sys.argv) == 2:
+                    print('\n', 'Unable to add: no task provided' ,'\n')
+                else:
+                    # db = Database()
+                    db.open_db(self.file, self.arg)
+                    pars.add_line(self.file)
+                    print(chr(27) + "[2J")
+                    db.view()
 
             elif ( sys.argv[1] == '-c' ):
                 # db = Database()
                 db.open_db(self.file, self.arg)
                 pars.complete(self.file)
+                print(chr(27) + "[2J")
                 db.view()
 
             elif ( sys.argv[1] == '-r' ):
                 # db = Database()
                 db.open_db(self.file, self.arg)
                 pars.remove(self.file)
+                print(chr(27) + "[2J")
                 db.view()
             else:
+                print(chr(27) + "[2J")
                 print('\n' + 'Unsupported argument !!!' + '\n')
+
 
 
 
