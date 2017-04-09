@@ -32,7 +32,7 @@ class Controller():
         pars = Parser()
 
         if len(sys.argv) == 1:
-            print(sys.argv)
+            os.system('clear')
             self.help_txt()
             # pass
         else:
@@ -63,11 +63,17 @@ class Controller():
                 db.view()
 
             elif ( sys.argv[1] == '-r' ):
-                # db = Database()
-                db.open_db(self.file, self.arg)
-                pars.remove(self.file)
-                os.system('clear')
-                db.view()
+                if len(sys.argv) == 2:
+                    os.system('clear')
+                    print('\n', 'Unable to remove: index is not a number' ,'\n')
+                    db.open_db(self.file, self.arg)
+                    db.view()
+                else:
+                    # db = Database()
+                    db.open_db(self.file, self.arg)
+                    pars.remove(self.file)
+                    os.system('clear')
+                    db.view()
             else:
                 os.system('clear')
                 print('\n' + 'Unsupported argument!!! Try again: ' + '\n')
