@@ -1,4 +1,5 @@
 import sys
+import os
 
 
 class Controller():
@@ -43,30 +44,35 @@ class Controller():
 
             elif ( sys.argv[1] == '-a' ):
                 if len(sys.argv) == 2:
+                    os.system('clear')
                     print('\n', 'Unable to add: no task provided' ,'\n')
+                    db.open_db(self.file, self.arg)
+                    db.view()
                 else:
                     # db = Database()
                     db.open_db(self.file, self.arg)
                     pars.add_line(self.file)
-                    print(chr(27) + "[2J")
+                    os.system('clear')
                     db.view()
 
             elif ( sys.argv[1] == '-c' ):
                 # db = Database()
                 db.open_db(self.file, self.arg)
                 pars.complete(self.file)
-                print(chr(27) + "[2J")
+                os.system('clear')
                 db.view()
 
             elif ( sys.argv[1] == '-r' ):
                 # db = Database()
                 db.open_db(self.file, self.arg)
                 pars.remove(self.file)
-                print(chr(27) + "[2J")
+                os.system('clear')
                 db.view()
             else:
-                print(chr(27) + "[2J")
-                print('\n' + 'Unsupported argument !!!' + '\n')
+                os.system('clear')
+                print('\n' + 'Unsupported argument!!! Try again: ' + '\n')
+                db.open_db(self.file, self.arg)
+                db.view()
 
 
 

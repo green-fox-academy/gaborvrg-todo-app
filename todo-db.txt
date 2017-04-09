@@ -4,5 +4,4 @@
 0;Walk the dog
 1;Tennivalo
 0;Masik tennivalo
-0;Proba
-0;Proba2
+1;Proba
