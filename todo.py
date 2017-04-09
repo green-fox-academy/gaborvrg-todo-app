@@ -62,7 +62,6 @@ class Controller():
 
 
 
-
 class Database():
     """Open database for further working process"""
     def __init__(self, line_list = []):
@@ -91,13 +90,13 @@ class Database():
 
 
     def view(self):
-            # print(self.line_list)
-            for line in self.line_list:
-                if line[1] == '0':
-                    print('\n',line[0], '[ ]' , ','.join(line[2:]))
-                
-                else:
-                    print('\n',line[0], '[X]' , ','.join(line[2:]))
+
+        for line in self.line_list:
+            if line[1] == '0':
+                print('\n',line[0], '[ ]' , ','.join(line[2:]))
+            
+            else:
+                print('\n',line[0], '[X]' , ','.join(line[2:]))
 
 
 
@@ -155,9 +154,3 @@ class Parser(Database):
 control = Controller()
 control.arg_reader()
 
-
-# control.help_txt()
-    
-
-# opendb_var = Database()
-# print(opendb_var.open_db('todo-db.txt','r'))
