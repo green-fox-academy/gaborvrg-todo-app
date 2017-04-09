@@ -57,6 +57,8 @@ class Controller():
                 db.open_db(self.file, self.arg)
                 pars.remove(self.file)
                 db.view()
+            else:
+                print('\n' + 'Unsupported argument !!!' + '\n')
 
 
 
@@ -152,16 +154,6 @@ class Parser(Database):
 
 control = Controller()
 control.arg_reader()
-
-
-
-
-# class Parser(object):
-#     """docstring for Parser"""
-#     def __init__(self, arg):
-#         super(Parser, self).__init__()
-#         self.arg = arg
-        
 
 
 # control.help_txt()
